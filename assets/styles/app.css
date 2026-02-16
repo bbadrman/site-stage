@@ -1,3 +1,86 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #ec4899;
+    --background-color: #0f172a;
+    --text-color: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
 body {
-    background-color: skyblue;
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, var(--background-color), #1e293b);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.tech-stack {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.tech-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    color: #cbd5e1;
 }
