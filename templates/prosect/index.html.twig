@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prosect index{% endblock %}
+
+{% block body %}
+    <h1>Prosect index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Datenaissane</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prosect in prosects %}
+            <tr>
+                <td>{{ prosect.id }}</td>
+                <td>{{ prosect.name }}</td>
+                <td>{{ prosect.lastname }}</td>
+                <td>{{ prosect.email }}</td>
+                <td>{{ prosect.tel }}</td>
+                <td>{{ prosect.datenaissane ? prosect.datenaissane|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_prosect_show', {'id': prosect.id}) }}">show</a>
+                    <a href="{{ path('app_prosect_edit', {'id': prosect.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_prosect_new') }}">Create new</a>
+{% endblock %}
