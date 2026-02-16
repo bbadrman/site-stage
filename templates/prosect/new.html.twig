@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Prosect{% endblock %}
+
+{% block body %}
+    <h1>Create new Prosect</h1>
+
+    {{ include('prosect/_form.html.twig') }}
+
+    <a href="{{ path('app_prosect_index') }}">back to list</a>
+{% endblock %}
