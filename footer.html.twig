@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+		<style>
+			/* === PAGE STRUCTURE === */
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+				display: flex;
+				flex-direction: column;
+				font-family: 'Poppins', sans-serif;
+			}
+
+			main {
+				flex: 1;
+				padding: 40px;
+			}
+
+			/* === FOOTER === */
+			.corporate-footer {
+				position: relative;
+				background: linear-gradient(135deg, #0c2d4f, #0e3a63);
+				color: #ffffff;
+				padding: 80px 0 50px;
+				overflow: hidden;
+			}
+
+			/* Wave background */
+			.corporate-footer::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: url("data:image/svg+xml, %3Csvg width='800' height='400' viewBox='0 0 800 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff15' stroke-width='1'%3E%3Cpath d='M0 100 Q200 50 400 100 T800 100'/%3E%3Cpath d='M0 200 Q200 150 400 200 T800 200'/%3E%3Cpath d='M0 300 Q200 250 400 300 T800 300'/%3E%3C/g%3E%3C/svg%3E");
+				opacity: 0.4;
+				background-size: cover;
+			}
+
+			.footer-container {
+				position: relative;
+				width: 85%;
+				margin: auto;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				z-index: 2;
+			}
+
+			.footer-column {
+				flex: 1;
+				min-width: 320px;
+			}
+
+			/* Logo */
+			.footer-logo {
+				display: flex;
+				align-items: center;
+				margin-bottom: 25px;
+			}
+
+			.logo-a {
+				font-size: 55px;
+				font-weight: 700;
+				margin-right: 8px;
+				line-height: 1;
+			}
+
+			.logo-main {
+				font-size: 22px;
+				font-weight: 600;
+				letter-spacing: 1px;
+			}
+
+			.logo-sub {
+				font-size: 14px;
+				letter-spacing: 3px;
+				font-weight: 300;
+			}
+
+			.company-desc {
+				font-size: 14px;
+				line-height: 1.7;
+				margin-bottom: 25px;
+				max-width: 420px;
+				opacity: 0.9;
+			}
+
+			/* Social icons */
+			.social-icons {
+				margin-bottom: 25px;
+			}
+
+			.social-icons a {
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+				width: 42px;
+				height: 42px;
+				border-radius: 50%;
+				background: #1b4b78;
+				margin-right: 12px;
+				text-decoration: none;
+				color: white;
+				font-weight: 600;
+				transition: 0.3s ease;
+			}
+
+			.social-icons a:hover {
+				background: #ffffff;
+				color: #0c2d4f;
+			}
+
+			/* Right column */
+			.footer-column.right h3 {
+				font-size: 18px;
+				margin-bottom: 25px;
+				font-weight: 600;
+				letter-spacing: 1px;
+			}
+
+			.footer-column.right p {
+				font-size: 14px;
+				margin-bottom: 12px;
+				line-height: 1.6;
+				opacity: 0.95;
+			}
+
+			.legal-note {
+				margin-top: 20px;
+				font-size: 13px;
+				opacity: 0.8;
+			}
+
+			.copyright {
+				font-size: 13px;
+				opacity: 0.7;
+				margin-top: 20px;
+			}
+
+			/* Responsive */
+			@media(max-width: 768px) {
+				.footer-container {
+					flex-direction: column;
+					gap: 50px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+
+
+		<footer class="corporate-footer">
+			<div class="footer-container">
+
+				<div class="footer-column left">
+					<div class="footer-logo">
+						<div class="logo-a">A</div>
+						<div>
+							<div class="logo-main">KSAM</div>
+							<div class="logo-sub">ASSURANCES</div>
+						</div>
+					</div>
+
+					<p class="company-desc">
+						AKSAM ASSURANCES - Être accompagné par un expert
+																								                pour mieux choisir vos contrats d'assurances.
+					</p>
+
+					<div class="social-icons">
+						<a href="#">F</a>
+						<a href="#">in</a>
+					</div>
+
+					<p class="copyright">
+						© 2022 Tous droits réservés AKSAM Assurances
+					</p>
+				</div>
+
+				<div class="footer-column right">
+					<h3>CONTACT</h3>
+
+					<p>
+						<strong>Adresse :</strong>
+						AksAM ASSURANCES – 10 rue de Penthièvre 75008 PARIS
+					</p>
+
+					<p>
+						<strong>Email :</strong>
+						contact@aksam-assurances.fr
+					</p>
+
+					<p>
+						<strong>Tél :</strong>
+						01 82 83 48 00
+																												                &nbsp;&nbsp;
+						<strong>Fax :</strong>
+						01 82 83 48 01
+					</p>
+
+					<p class="legal-note">
+						Entreprise soumise au contrôle de l'ACPR
+					</p>
+				</div>
+
+			</div>
+		</footer>
+
+	</body>
+</html>
