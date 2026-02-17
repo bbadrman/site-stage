@@ -8,11 +8,11 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class DinaController extends AbstractController
 {
-    #[Route('/dina', name: 'app_dina')]
+    #[Route("/", name: "app_home")]
     public function index(): Response
     {
-        return $this->render('dina/index.html.twig', [
-            'controller_name' => 'DinaController',
+        return $this->render("dina/index.html.twig", [
+            "controller_name" => "DinaController",
         ]);
     }
 }
