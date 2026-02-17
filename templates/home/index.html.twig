@@ -1,27 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome to Your New App!
-{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
-	<div class="container">
-		<div class="card">
-			<h1>Hello, World! 🚀</h1>
-			<p>
-				Welcome to your brand new Symfony application. 
-				            We've set up a modern, high-performance environment just for you.
-				<br>
-				It's time to build something amazing.
-			</p>
+<header style="
+    width: 100%; 
+    background: #ffffff; 
+    padding: 12px 30px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+">
 
-			<a href="https://symfony.com/doc" class="btn">Read Documentation</a>
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="
+            background: #e89624; 
+            width: 42px; 
+            height: 42px; 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        ">
+            🛡️
+        </div>
+        
+        <div>
+            <div style="color: #6366f1; font-weight: 700; font-size: 17px; line-height: 1.2;">
+                Assurance obsèques en ligne et en quelques clics.
+            </div>
+            <div style="color: #888888; font-size: 13px; margin-top: 2px;">
+                Protection Essentielle
+            </div>
+        </div>
+    </div>
 
-			<div class="tech-stack">
-				<span class="tech-item">Symfony 7.4</span>
-				<span class="tech-item">PHP 8.3</span>
-				<span class="tech-item">AssetMapper</span>
-				<span class="tech-item">Twig</span>
-			</div>
-		</div>
-	</div>
+    <div style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
+        <span style="color: #6b7280; font-size: 14px; white-space: nowrap;">Appelez-nous</span>
+        <a href="tel:0600000000" style="
+            background: #f0c38e; 
+            color: white; 
+            padding: 10px 24px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+            /* Fixes for the text cutting off */
+            white-space: nowrap;
+            min-width: max-content;
+            flex-shrink: 0;
+        ">
+            <span style="font-size: 16px;">📞</span> 06.00.00.00.00
+        </a>
+    </div>
+
+</header>
 {% endblock %}
