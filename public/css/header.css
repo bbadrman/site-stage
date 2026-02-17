@@ -1,0 +1,77 @@
+/* HEADER */
+
+.main-header{
+    width:100%;
+    background:#ffffff;
+    padding:12px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow:0 2px 5px rgba(0,0,0,0.05);
+    box-sizing:border-box;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-circle{
+    background:#e89624;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:18px;
+    flex-shrink:0;
+}
+
+.header-title{
+    color:#6366f1;
+    font-weight:700;
+    font-size:17px;
+    line-height:1.2;
+}
+
+.header-sub{
+    color:#888888;
+    font-size:13px;
+    margin-top:2px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-shrink:0;
+}
+
+.call-text{
+    color:#6b7280;
+    font-size:14px;
+    white-space:nowrap;
+}
+
+.call-btn{
+    background:#f0c38e;
+    color:white;
+    padding:10px 24px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    white-space:nowrap;
+    min-width:max-content;
+    flex-shrink:0;
+}
+
+.call-btn:hover{
+    background:#e5b173;
+}
