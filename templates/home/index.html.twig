@@ -3,42 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-<header style="width: 100%; background: #ffffff; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; font-family: sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.05); box-sizing: border-box;">
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="background: #e89624; width: 42px; height: 42px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; flex-shrink: 0;">🛡️</div>
-        <div>
-            <div style="color: #6366f1; font-weight: 700; font-size: 17px; line-height: 1.2;">Assurance obsèques en ligne et en quelques clics.</div>
-            <div style="color: #888888; font-size: 13px;">Protection Essentielle</div>
-        </div>
-    </div>
-    <div style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-        <span style="color: #6b7280; font-size: 14px;" class="d-none d-md-inline">Appelez-nous</span>
-        <a href="tel:0182834800" style="background: #f0c38e; color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 10px; white-space: nowrap;">
-            📞 01.82.83.48.00
-        </a>
-    </div>
-</header>
 
-	<div class="container">
-		<div class="card">
-			<h1>Hello, World! 🚀</h1>
-			<p>
-				Welcome to your brand new Symfony application. 
-				            We've set up a modern, high-performance environment just for you.
-				<br>
-				It's time to build something amazing.
-			</p>
-
-			<a href="https://symfony.com/doc" class="btn">Read Documentation</a>
-
-			<div class="tech-stack">
-				<span class="tech-item">Symfony 7.4</span>
-				<span class="tech-item">PHP 8.3</span>
-				<span class="tech-item">AssetMapper</span>
-				<span class="tech-item">Twig</span>
-			</div>
-		</div>
-	</div>
 <main style="max-width: 1200px; margin: 50px auto; padding: 0 20px; font-family: sans-serif;">
     
     <div style="text-align: center; margin-bottom: 50px;">
@@ -102,4 +67,66 @@
 
     </div>
 </main>
+
+<section class="faq-wrap">
+  <div class="faq-container">
+
+    <h2 class="faq-title"><span>FAQ</span> – Questions fréquentes</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-card">
+        <p class="faq-q">
+          <span class="faq-icon">€</span>
+          Quel est le prix d'une assurance obsèques ?
+        </p>
+        <p class="faq-a">Entre <b>1 €</b> et <b>3 €</b> / jour, selon l’âge et le montant du capital souhaité.</p>
+      </div>
+
+      <div class="faq-card">
+        <p class="faq-q">
+          <span class="faq-icon">📅</span>
+          À quel âge peut-on souscrire ?
+        </p>
+        <p class="faq-a">Généralement entre <b>40</b> et <b>85</b> ans, selon les compagnies.</p>
+      </div>
+
+      <div class="faq-card">
+        <p class="faq-q">
+          <span class="faq-icon">🛡️</span>
+          Le capital est-il garanti ?
+        </p>
+        <p class="faq-a">Oui, il est garanti contractuellement et revalorisé selon les conditions du contrat.</p>
+      </div>
+
+      <div class="faq-card">
+        <p class="faq-q">
+          <span class="faq-icon">📈</span>
+          Les cotisations augmentent-elles ?
+        </p>
+        <p class="faq-a">Non, elles restent fixes si vous choisissez une formule à cotisations viagères fixes.</p>
+      </div>
+
+      <div class="faq-card">
+        <p class="faq-q">
+          <span class="faq-icon">🩺</span>
+          Faut-il passer un examen médical ?
+        </p>
+        <p class="faq-a">Non, sauf exceptions. Une simple déclaration de santé suffit dans la plupart des cas.</p>
+      </div>
+
+      <div class="faq-card">
+        <p class="faq-q">
+          <span class="faq-icon">❔</span>
+          À quoi sert ce site ?
+        </p>
+        <p class="faq-a">
+          Vous mettre en relation directe avec un conseiller spécialisé pour obtenir un devis immédiat et personnalisé, sans engagement.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 {% endblock %}
