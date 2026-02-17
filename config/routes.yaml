@@ -7,6 +7,8 @@
 # To list all registered routes, run the following command:
 #   bin/console debug:router
 
-app_home:
-    path: /
-    controller: App\Controller\HelloController::index
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
