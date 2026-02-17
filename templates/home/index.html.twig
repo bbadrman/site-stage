@@ -1,66 +1,136 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home
+{% endblock %}
 
 {% block body %}
-<header style="
-    width: 100%; 
-    background: #ffffff; 
-    padding: 12px 30px; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    box-sizing: border-box;
-">
 
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="
-            background: #e89624; 
-            width: 42px; 
-            height: 42px; 
-            border-radius: 50%; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            color: white;
-            font-size: 18px;
-            flex-shrink: 0;
-        ">
-            🛡️
-        </div>
-        
-        <div>
-            <div style="color: #6366f1; font-weight: 700; font-size: 17px; line-height: 1.2;">
-                Assurance obsèques en ligne et en quelques clics.
-            </div>
-            <div style="color: #888888; font-size: 13px; margin-top: 2px;">
-                Protection Essentielle
-            </div>
-        </div>
-    </div>
+	<section class="features-section">
+		<div class="features-header">
+			<h2 class="section-title">Pourquoi souscrire une
+				<span>assurance obsèques ?</span>
+			</h2>
+			<p class="section-subtitle">
+				L'assurance obsèques permet de financer ou d'organiser vos funérailles à l'avance afin d'éviter à vos proches un poids financier et émotionnel important.
+			</p>
+		</div>
 
-    <div style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;">
-        <span style="color: #6b7280; font-size: 14px; white-space: nowrap;">Appelez-nous</span>
-        <a href="tel:0600000000" style="
-            background: #f0c38e; 
-            color: white; 
-            padding: 10px 24px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px;
-            /* Fixes for the text cutting off */
-            white-space: nowrap;
-            min-width: max-content;
-            flex-shrink: 0;
-        ">
-            <span style="font-size: 16px;">📞</span> 06.00.00.00.00
-        </a>
-    </div>
+		<div
+			class="features-grid">
 
-</header>
+			<!-- CARD 1 -->
+			<div class="feature-card">
+				<div class="feature-icon purple">💜</div>
+				<h3 class="feature-title">Soulagez financièrement vos proches</h3>
+				<p class="feature-desc">Les frais d'obsèques varient entre 3 000 € et 5 000 €.</p>
+				<ul class="feature-list">
+					<li>Le contrat couvre tout ou partie des dépenses</li>
+					<li>Évitez à votre famille un poids financier difficile</li>
+				</ul>
+			</div>
+
+			<!-- CARD 2 -->
+			<div class="feature-card">
+				<div class="feature-icon green">📄</div>
+				<h3 class="feature-title">Contrat simple, transparent et rapide</h3>
+				<ul class="feature-list">
+					<li>Choisissez le montant du capital garanti (3 000 à 10 000 €)</li>
+					<li>Aucun changement imprévu, cotisations fixes</li>
+				</ul>
+			</div>
+
+			<!-- CARD 3 -->
+			<div class="feature-card">
+				<div class="feature-icon blue">💵</div>
+				<h3 class="feature-title">Aucune avance de frais</h3>
+				<p class="feature-desc">
+					Le capital est versé directement au prestataire funéraire ou aux bénéficiaires désignés.
+				</p>
+			</div>
+
+			<!-- CARD 4 -->
+			<div class="feature-card">
+				<div class="feature-icon yellow">👤</div>
+				<h3 class="feature-title">Aucune examen médical</h3>
+				<p class="small-info">(selon conditions)</p>
+				<p class="feature-desc">
+					La plupart des contrats acceptent l'adhésion sur simple déclaration de santé.
+				</p>
+			</div>
+
+		</div>
+	</section>
+
+
+	<!-- FAQ -->
+	<section class="faq-wrap">
+		<div class="faq-container">
+
+			<h2 class="faq-title">FAQ – Questions fréquentes</h2>
+
+			<div class="faq-list">
+
+				<div class="faq-card">
+					<p class="faq-q">
+						<span class="faq-icon">€</span>
+						Quel est le prix d'une assurance obsèques ?
+					</p>
+					<p class="faq-a">Entre
+						<b>1 €</b>
+						et
+						<b>3 €</b>
+						/ jour, selon l’âge et le montant du capital souhaité.</p>
+				</div>
+
+				<div class="faq-card">
+					<p class="faq-q">
+						<span class="faq-icon">📅</span>
+						À quel âge peut-on souscrire ?
+					</p>
+					<p class="faq-a">Généralement entre
+						<b>40</b>
+						et
+						<b>85</b>
+						ans, selon les compagnies.</p>
+				</div>
+
+				<div class="faq-card">
+					<p class="faq-q">
+						<span class="faq-icon">🛡️</span>
+						Le capital est-il garanti ?
+					</p>
+					<p class="faq-a">Oui, il est garanti contractuellement et revalorisé selon les conditions du contrat.</p>
+				</div>
+
+				<div class="faq-card">
+					<p class="faq-q">
+						<span class="faq-icon">📈</span>
+						Les cotisations augmentent-elles ?
+					</p>
+					<p class="faq-a">Non, elles restent fixes si vous choisissez une formule à cotisations viagères fixes.</p>
+				</div>
+
+				<div class="faq-card">
+					<p class="faq-q">
+						<span class="faq-icon">🩺</span>
+						Faut-il passer un examen médical ?
+					</p>
+					<p class="faq-a">Non, sauf exceptions. Une simple déclaration de santé suffit dans la plupart des cas.</p>
+				</div>
+
+				<div class="faq-card">
+					<p class="faq-q">
+						<span class="faq-icon">❔</span>
+						À quoi sert ce site ?
+					</p>
+					<p class="faq-a">
+						Vous mettre en relation directe avec un conseiller spécialisé pour obtenir un devis immédiat et personnalisé, sans engagement.
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
 {% endblock %}
