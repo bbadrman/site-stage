@@ -8,23 +8,25 @@
 
 {% block body %}
 <section class="w-page">
-  <div class="w-bg"></div>
+  <div class="w-bg">
+    <div class="w-orb o1"></div>
+    <div class="w-orb o2"></div>
+    <div class="w-orb o3"></div>
+    <div class="w-grid"></div>
+  </div>
 
   <div class="w-wrap">
-    <div class="w-hero">
-      <h1>Financial Widgets</h1>
-      <p>
-        دابا غادي نديرو Widgets بواجهة نظيفة بحال اللي فالصورة (Symfony + CSS + JS)
-      </p>
-    </div>
 
     <!-- BIG CARD -->
     <article class="w-card w-card--big">
       <div class="w-top">
-        <h2>Tech Giants <span class="w-step">(2/7)</span></h2>
+        <div>
+          <h2>Tech Giants <span class="w-step" id="wStep">(1/7)</span></h2>
+          <p class="w-sub">Chart + tabs + ranges</p>
+        </div>
 
-        <div class="w-progress">
-          <span class="w-bar" style="width: 52%"></span>
+        <div class="w-progress" title="Auto progress">
+          <span class="w-bar" id="wBar" style="width: 14%"></span>
         </div>
       </div>
 
@@ -47,15 +49,15 @@
 
       <div class="w-meta">
         <div class="w-meta-left">
-          <span class="w-badge" id="wSym">AAPL</span>
-          <strong id="wPrice">265,36</strong>
-          <span class="w-chg up" id="wChg">+1,48 (0,56%)</span>
+          <span class="w-badge" id="wSym">NVDA</span>
+          <strong id="wPrice">—</strong>
+          <span class="w-chg up" id="wChg">—</span>
         </div>
 
         <div class="w-meta-right">
-          <span>Day Hi/Lo: <b id="wHL">265,94 / 262,48</b></span>
-          <span>Volume: <b id="wVol">533.97K</b></span>
-          <span>At: <b id="wAt">18 févr. 2026</b></span>
+          <span>Day Hi/Lo: <b id="wHL">—</b></span>
+          <span>Volume: <b id="wVol">—</b></span>
+          <span>At: <b id="wAt">—</b></span>
         </div>
       </div>
 
@@ -85,11 +87,8 @@
         </div>
       </div>
 
-      <div class="w-list" id="wList">
-        <!-- JS كيعمّرها -->
-      </div>
-
-      <p class="w-madeby">Crafted for Aksam</p>
+      <div class="w-list" id="wList"></div>
+      <p class="w-madeby">Crafted for AKSAM</p>
     </section>
 
     <!-- CRYPTO TICKER -->
@@ -97,130 +96,192 @@
       <div class="w-ticker-fade left"></div>
       <div class="w-ticker-fade right"></div>
 
-      <div class="w-track" id="wTrack">
-        <div class="w-run" id="wRun">
-          <!-- JS -->
-        </div>
+      <div class="w-track">
+        <div class="w-run" id="wRun"></div>
       </div>
     </section>
+
   </div>
 </section>
 {% endblock %}
 
 {% block javascripts %}
-  <script>
-    // ====== Fake data (باش غير يبان الUI بحال الصورة) ======
-    const market = [
-      { sym:"AAPL", price:"262,81", chg:"-0,94 (-0,36%)", dir:"down" },
-      { sym:"MSFT", price:"400,67", chg:"+3,88 (0,98%)", dir:"up" },
-      { sym:"NVDA", price:"188,50", chg:"+3,52 (1,9%)", dir:"up" },
-      { sym:"AMZN", price:"206,52", chg:"+0,67 (0,33%)", dir:"up" },
-      { sym:"GOOGL", price:"303,91", chg:"+1,21 (0,4%)", dir:"up" },
-      { sym:"TSLA", price:"413,89", chg:"+0,65 (0,16%)", dir:"up" },
-      { sym:"META", price:"633,15", chg:"-0,8 (-0,13%)", dir:"down" },
-    ];
+<script>
+  // ===== config =====
+  const TECH = ["NVDA","AAPL","MSFT","AMZN","GOOGL","META","TSLA"];
+  const MARKET = ["AAPL","MSFT","NVDA","AMZN","GOOGL","TSLA","META"];
+  const CRYPTO = ["BTC-USD","ETH-USD","SOL-USD","XRP-USD","ADA-USD","DOGE-USD","AVAX-USD","LINK-USD"];
 
-    const crypto = [
-      { sym:"BTC", chg:"▼ 0,5%" },
-      { sym:"ETH", chg:"▼ 1,2%" },
-      { sym:"SOL", chg:"▼ 3,4%" },
-      { sym:"XRP", chg:"▼ 1,0%" },
-      { sym:"ADA", chg:"▼ 0,0%" },
-      { sym:"DOGE", chg:"▼ 0,6%" },
-      { sym:"AVAX", chg:"▼ 1,1%" },
-      { sym:"LINK", chg:"▼ 1,4%" },
-    ];
+  const RANGE_MAP = { "1D":"1d", "5D":"5d", "1M":"1mo", "6M":"6mo", "YTD":"ytd", "1Y":"1y", "5Y":"5y", "ALL":"max" };
 
-    // ====== Market list render ======
+  let activeSymbol = "NVDA";
+  let activeRange = "1mo";
+  let autoIndex = 0;
+  let autoTimer = null;
+
+  // ===== utils =====
+  function pointsToPath(values, w=900, h=260, pad=18){
+    if(!values || values.length < 2) return "";
+    const minY = Math.min(...values);
+    const maxY = Math.max(...values);
+    const sx = (i)=> pad + (i/(values.length-1))*(w-2*pad);
+    const sy = (y)=> (h-pad) - ((y-minY)/(maxY-minY || 1))*(h-2*pad);
+
+    let d = `M ${sx(0)} ${sy(values[0])}`;
+    for(let i=1;i<values.length;i++) d += ` L ${sx(i)} ${sy(values[i])}`;
+    return d;
+  }
+
+  const fmt = (n)=> (n===null||n===undefined) ? "—" : new Intl.NumberFormat("fr-FR",{maximumFractionDigits:2}).format(n);
+  const fmtPct = (n)=> (n===null||n===undefined) ? "—" : new Intl.NumberFormat("fr-FR",{maximumFractionDigits:2}).format(n)+"%";
+  const fmtVol = (n)=>{
+    if(!n) return "—";
+    if(n>=1e9) return (n/1e9).toFixed(2)+"B";
+    if(n>=1e6) return (n/1e6).toFixed(2)+"M";
+    if(n>=1e3) return (n/1e3).toFixed(2)+"K";
+    return String(n);
+  };
+
+  async function api(url){
+    const res = await fetch(url);
+    if(!res.ok) throw new Error("API error");
+    return res.json();
+  }
+
+  // ===== render big widget =====
+  async function renderBigCard(){
+    const data = await api(`/api/widgets/quote/${activeSymbol}?range=${activeRange}`);
+
+    // step/progress
+    const i = TECH.indexOf(activeSymbol);
+    document.getElementById("wStep").textContent = `(${(i>=0?i:0)+1}/7)`;
+    document.getElementById("wBar").style.width = `${((i>=0?i:0)+1)/7*100}%`;
+
+    document.getElementById("wSym").textContent = data.symbol;
+    document.getElementById("wPrice").textContent = fmt(data.last);
+
+    const isUp = (data.change ?? 0) >= 0;
+    const chgEl = document.getElementById("wChg");
+    chgEl.classList.toggle("up", isUp);
+    chgEl.classList.toggle("down", !isUp);
+    chgEl.textContent = `${isUp?"+":""}${fmt(data.change)} (${isUp?"+":""}${fmtPct(data.changePct)})`;
+
+    document.getElementById("wHL").textContent = `${fmt(data.dayHigh)} / ${fmt(data.dayLow)}`;
+    document.getElementById("wVol").textContent = fmtVol(data.volume);
+
+    document.getElementById("wAt").textContent = data.at ?? "—";
+
+    document.getElementById("wPath").setAttribute("d", pointsToPath(data.series));
+  }
+
+  // ===== render market list =====
+  async function renderMarketList(){
+    const mode = document.querySelector("[data-toggle] button.active")?.dataset.mode || "intraday";
+    const items = await api(`/api/widgets/market?symbols=${encodeURIComponent(MARKET.join(","))}&mode=${mode}`);
+
     const list = document.getElementById("wList");
-    function spark(dir){
-      // mini sparkline svg (simple)
-      const p = dir === "up"
-        ? "M2,26 L10,18 L18,22 L26,10 L34,14 L42,6 L50,9 L58,4 L66,8 L74,3 L82,6 L90,2"
-        : "M2,4 L10,10 L18,7 L26,15 L34,12 L42,20 L50,18 L58,24 L66,22 L74,26 L82,23 L90,27";
+    list.innerHTML = items.map(it=>{
+      const up = (it.change ?? 0) >= 0;
       return `
-        <svg viewBox="0 0 92 30" class="w-spark ${dir}">
-          <path d="${p}" />
-          <path class="fill" d="${p} L90,30 L2,30 Z" />
-        </svg>`;
-    }
-    function renderMarket(){
-      list.innerHTML = market.map(m => `
         <article class="w-item">
           <div class="w-item-left">
-            <div class="w-dot ${m.dir}"></div>
+            <div class="w-dot ${up?"up":"down"}"></div>
             <div>
-              <div class="w-sym">${m.sym}</div>
-              <div class="w-price">${m.price} <span class="w-usd">USD</span></div>
-              <div class="w-change ${m.dir}">${m.chg}</div>
-              <div class="w-time">15:30:00</div>
+              <div class="w-sym">${it.symbol}</div>
+              <div class="w-price">${fmt(it.price)} <span class="w-usd">${it.currency || "USD"}</span></div>
+              <div class="w-change ${up?"up":"down"}">${up?"+":""}${fmt(it.change)} (${up?"+":""}${fmtPct(it.changePct)})</div>
+              <div class="w-time">${it.time || ""}</div>
             </div>
           </div>
           <div class="w-item-right">
-            <div class="w-tag">Intraday</div>
-            ${spark(m.dir)}
+            <div class="w-tag">${mode}</div>
+            <div class="w-spark ${up?"up":"down"}"></div>
           </div>
         </article>
-      `).join("");
-    }
-    renderMarket();
+      `;
+    }).join("");
+  }
 
-    // ====== Ticker render ======
-    const run = document.getElementById("wRun");
-    function renderTicker(){
-      const line = crypto.map(c => `
-        <span class="w-tk">
-          <b>${c.sym}</b> <i>${c.chg}</i>
-        </span>
-      `).join("");
-      // duplicate for infinite loop effect
-      run.innerHTML = `<div class="w-row">${line}</div><div class="w-row">${line}</div>`;
-    }
-    renderTicker();
+  // ===== render crypto ticker =====
+  async function renderCryptoTicker(){
+    const items = await api(`/api/widgets/crypto?symbols=${encodeURIComponent(CRYPTO.join(","))}`);
 
-    // ====== Tabs ======
-    const tabs = document.querySelector("[data-tabs]");
-    tabs.addEventListener("click", (e) => {
-      const btn = e.target.closest("button");
-      if(!btn) return;
-      tabs.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      document.getElementById("wSym").textContent = btn.dataset.symbol;
-    });
+    const line = items.map(it=>{
+      const name = (it.symbol || "").replace("-USD","");
+      const pct = it.changePct ?? 0;
+      const down = pct < 0;
+      return `<span class="w-tk"><b>${name}</b> <i class="${down?"down":"up"}">${down?"▼":"▲"} ${fmtPct(Math.abs(pct))}</i></span>`;
+    }).join("");
 
-    // ====== Range buttons ======
-    const range = document.querySelector("[data-range]");
-    range.addEventListener("click", (e) => {
-      const btn = e.target.closest("button");
-      if(!btn) return;
-      range.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-    });
+    document.getElementById("wRun").innerHTML =
+      `<div class="w-row">${line}</div><div class="w-row">${line}</div>`;
+  }
 
-    // ====== Toggle ======
-    const toggle = document.querySelector("[data-toggle]");
-    toggle.addEventListener("click", (e) => {
-      const btn = e.target.closest("button");
-      if(!btn) return;
-      toggle.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-    });
+  // ===== auto cycle tech giants (optional) =====
+  function startAuto(){
+    stopAuto();
+    autoTimer = setInterval(async ()=>{
+      autoIndex = (autoIndex + 1) % TECH.length;
+      const next = TECH[autoIndex];
 
-    // ====== Refresh (fake) ======
-    document.getElementById("wRefresh").addEventListener("click", () => {
-      list.classList.add("flash");
-      setTimeout(()=>list.classList.remove("flash"), 450);
-    });
+      // set active pill
+      document.querySelectorAll("[data-tabs] .w-pill").forEach(b=>{
+        b.classList.toggle("active", b.dataset.symbol === next);
+      });
 
-    // ====== Draw simple line path for big chart ======
-    function makePath(){
-      const pts = [30,120,60,140,100,110,140,150,190,90,240,95,290,70,340,80,390,45,440,60,490,40,540,55,590,35,640,48,690,30,740,44,790,28,840,58,880,46];
-      let d = `M ${pts[0]} ${pts[1]}`;
-      for(let i=2;i<pts.length;i+=2){
-        d += ` L ${pts[i]} ${pts[i+1]}`;
-      }
-      document.getElementById("wPath").setAttribute("d", d);
-    }
-    makePath();
-  </script>
+      activeSymbol = next;
+      await renderBigCard();
+    }, 8000);
+  }
+  function stopAuto(){
+    if(autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  // ===== events =====
+  document.querySelector("[data-tabs]").addEventListener("click", async (e)=>{
+    const btn = e.target.closest("button");
+    if(!btn) return;
+    stopAuto();
+    document.querySelectorAll("[data-tabs] .w-pill").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    activeSymbol = btn.dataset.symbol;
+    await renderBigCard();
+    startAuto();
+  });
+
+  document.querySelector("[data-range]").addEventListener("click", async (e)=>{
+    const btn = e.target.closest("button");
+    if(!btn) return;
+    document.querySelectorAll("[data-range] .w-range-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    activeRange = RANGE_MAP[btn.dataset.r] || "1mo";
+    await renderBigCard();
+  });
+
+  document.querySelector("[data-toggle]").addEventListener("click", async (e)=>{
+    const btn = e.target.closest("button");
+    if(!btn) return;
+    document.querySelectorAll("[data-toggle] button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    await renderMarketList();
+  });
+
+  document.getElementById("wRefresh").addEventListener("click", async ()=>{
+    await renderMarketList();
+    await renderCryptoTicker();
+  });
+
+  // ===== init =====
+  (async function init(){
+    autoIndex = 0;
+    await renderBigCard();
+    await renderMarketList();
+    await renderCryptoTicker();
+    startAuto();
+
+    setInterval(renderCryptoTicker, 30000);
+    setInterval(renderMarketList, 60000);
+  })();
+</script>
 {% endblock %}
