@@ -1,19 +1,49 @@
-{% extends 'base.html.twig' %}
+{% extends 'dina_base.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('css/dina.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Register</h1>
+<div class="dina-page">
+  <div class="hero-container">
 
-    {{ form_errors(registrationForm) }}
+    <div class="hero-left">
+      <h1 class="hero-title">Create your account.</h1>
+      <p class="hero-subtitle">Join Dina and start your journey with a modern experience.</p>
+    </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    <div class="login-box">
+      <h3>Create Account</h3>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+      {{ form_start(registrationForm, {'attr': {'class': 'auth-form'}}) }}
+
+        <div class="field">
+          {{ form_widget(registrationForm.email, {'attr': {'class': 'input', 'placeholder': 'Email'}}) }}
+          {{ form_errors(registrationForm.email) }}
+        </div>
+
+        <div class="field">
+          {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input', 'placeholder': 'Password'}}) }}
+          {{ form_errors(registrationForm.plainPassword) }}
+        </div>
+
+        <div class="remember-row" style="justify-content:flex-start;">
+          {{ form_widget(registrationForm.agreeTerms) }}
+          <span style="margin-left:8px;">Agree terms</span>
+          {{ form_errors(registrationForm.agreeTerms) }}
+        </div>
+
+        <button type="submit" class="btn primary">Register</button>
+
+        <a href="{{ path('app_login') }}" class="btn secondary">Already have an account? Login</a>
+
+      {{ form_end(registrationForm) }}
+    </div>
+
+  </div>
+</div>
 {% endblock %}

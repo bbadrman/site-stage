@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class DinaController extends AbstractController
 {
-    #[Route("/", name: "app_home")]
+#[Route("/", name: "app_dina")]
     public function index(): Response
     {
         return $this->render("dina/index.html.twig", [

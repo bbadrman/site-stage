@@ -1,34 +1,72 @@
-{% extends 'base.html.twig' %}
+{% extends 'dina_base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Sign in{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('css/dina.css') }}">
+{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<div class="dina-page">
+  <div class="hero-container">
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
-        </div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
-
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> Remember me
-        </label>
+    <div class="hero-left">
+      <h1 class="hero-title">Advanced analytics built for precision trading.</h1>
+      <p class="hero-subtitle">Transforming complex market data into decisive action.</p>
     </div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+    <div class="login-box">
+      <h3>Please sign in</h3>
+
+      {% if error %}
+        <div class="form-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+      {% endif %}
+
+      <form method="post" class="auth-form">
+        <div class="field">
+          <input
+            type="email"
+            value="{{ last_username }}"
+            name="_username"
+            id="inputEmail"
+            class="input"
+            autocomplete="email"
+            placeholder="Email"
+            required
+            autofocus
+          >
+        </div>
+
+        <div class="field">
+          <input
+            type="password"
+            name="_password"
+            id="inputPassword"
+            class="input"
+            autocomplete="current-password"
+            placeholder="Password"
+            required
+          >
+        </div>
+
+        <div class="remember-row">
+          <label class="remember">
+            <input type="checkbox" name="_remember_me"> Remember me
+          </label>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <button class="btn primary" type="submit">Sign in</button>
+        <p class="auth-link">
+  Don't have an account?
+  <a href="{{ path('app_register') }}">Register</a>
+</p>
+
+      </form>
+    </div>
+
+  </div>
+</div>
 {% endblock %}

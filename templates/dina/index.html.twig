@@ -1,21 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'dina_base.html.twig' %}
 
-{% block title %}Welcome to Dina
-{% endblock %}
+{% block title %}dina{% endblock %}
 
 {% block body %}
-	<div style="margin: 50px; text-align: center;">
-		<h1>Welcome to Dina! 🚀</h1>
 
-		{% if app.user %}
-			<p>Hello,
-				{{ app.user.email }}!</p>
-			<p>You are logged in.</p>
-			<a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
-		{% else %}
-			<p>Please login or register to continue.</p>
-			<a href="{{ path('app_login') }}" class="btn btn-primary">Login</a>
-			<a href="{{ path('app_register') }}" class="btn btn-success">Register</a>
-		{% endif %}
-	</div>
+<div class="dina-page">
+    <div class="hero-container">
+        
+        <div class="hero-left">
+            <h1 class="hero-title">Experience the Future of Dina</h1>
+            <p class="hero-subtitle">
+                A modern, secure, and intuitive platform designed to simplify your workflow.
+            </p>
+        </div>
+
+        <div class="login-box">
+            <h3>Get Started</h3>
+
+            {% if app.user %}
+                <p class="user-email">You are logged in as {{ app.user.email }}</p>
+                <div class="btn-group">
+                    <a href="{{ path('app_logout') }}" class="btn">Logout</a>
+                </div>
+            {% else %}
+                <div class="btn-group">
+                    <a href="{{ path('app_login') }}" class="btn">Login Now</a>
+                    <a href="{{ path('app_register') }}" class="btn secondary">Create Account</a>
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+</div>
+
 {% endblock %}
