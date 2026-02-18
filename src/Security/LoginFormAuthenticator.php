@@ -20,23 +20,22 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = "app_login";
+    public const LOGIN_ROUTE = 'app_login';
 
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
-    {
-    }
+    public function __construct(private UrlGeneratorInterface $urlGenerator) {}
 
     public function authenticate(Request $request): Passport
     {
-        $email = $request->getPayload()->getString("email");
+        $identifier = (string) $request->request->get('_username', '');
+        $password   = (string) $request->request->get('_password', '');
 
-        $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
+        $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $identifier);
 
         return new Passport(
-            new UserBadge($email),
-            new PasswordCredentials($request->getPayload()->getString("password")),
+            new UserBadge($identifier),
+            new PasswordCredentials($password),
             [
-                new CsrfTokenBadge("authenticate", $request->getPayload()->getString("_csrf_token")),
+                new CsrfTokenBadge('authenticate', (string) $request->request->get('_csrf_token')),
                 new RememberMeBadge(),
             ]
         );
@@ -48,7 +47,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate("app_home"));
+        $user = $token->getUser();
+        $roles = method_exists($user, 'getRoles') ? $user->getRoles() : [];
+
+        if (in_array('ROLE_ADMIN', $roles, true)) {
+            return new RedirectResponse($this->urlGenerator->generate('app_admin_dashboard'));
+        }
+
+        return new RedirectResponse($this->urlGenerator->generate('app_about'));
     }
 
     protected function getLoginUrl(Request $request): string
