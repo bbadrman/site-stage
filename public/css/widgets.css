@@ -1,0 +1,295 @@
+/* ===== Page wrapper inside dina_base ===== */
+.widgets-page{
+  position: relative;
+  min-height: calc(100vh - 120px);
+  padding: 70px 16px 60px;
+  overflow: hidden;
+}
+
+/* ===== Background like cortelytics ===== */
+.widgets-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:
+    radial-gradient(900px 600px at 60% 35%, rgba(34,197,94,.55), transparent 60%),
+    radial-gradient(800px 550px at 30% 45%, rgba(16,185,129,.35), transparent 60%),
+    radial-gradient(900px 700px at 10% 90%, rgba(30,64,175,.55), transparent 65%),
+    linear-gradient(180deg, #061726 0%, #041421 100%);
+}
+
+.widgets-glow{
+  position:absolute;
+  inset:-30%;
+  background: radial-gradient(circle at 55% 40%, rgba(34,197,94,.35), transparent 55%);
+  filter: blur(30px);
+  opacity:.9;
+}
+
+/* fancy orbit lines */
+.widgets-lines{
+  position:absolute;
+  inset:-10%;
+  background:
+    radial-gradient(circle at 60% 45%, transparent 0 58%, rgba(255,255,255,.08) 58.2% 58.5%, transparent 59%),
+    radial-gradient(circle at 48% 55%, transparent 0 52%, rgba(255,255,255,.06) 52.1% 52.35%, transparent 53%),
+    radial-gradient(circle at 50% 35%, transparent 0 64%, rgba(255,255,255,.05) 64.2% 64.5%, transparent 65%);
+  transform: rotate(-8deg);
+  opacity:.9;
+}
+
+/* dots */
+.widgets-dots{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 22%, rgba(255,255,255,.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 65% 68%, rgba(255,255,255,.14) 0 2px, transparent 3px),
+    radial-gradient(circle at 35% 75%, rgba(255,255,255,.12) 0 2px, transparent 3px),
+    radial-gradient(circle at 55% 55%, rgba(255,255,255,.12) 0 2px, transparent 3px);
+  opacity:.8;
+}
+
+.widgets-wrap{
+  position:relative;
+  z-index:1;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.widgets-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 26px;
+}
+
+/* ===== Cards ===== */
+.w-card{
+  width: min(820px, 92vw);
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.25);
+  padding: 14px;
+  color:#0f172a;
+}
+
+.w-card--wide{ padding: 16px; }
+.w-card--stack{ width: min(360px, 92vw); }
+
+.w-card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.w-card-head h2{
+  font-size: 14px;
+  margin:0;
+  font-weight:700;
+}
+
+.w-card-head h2 span{
+  font-weight:600;
+  color:#64748b;
+}
+
+.w-progress{
+  flex:1;
+  max-width: 240px;
+  height: 6px;
+  background:#e2e8f0;
+  border-radius: 999px;
+  overflow:hidden;
+}
+.w-progress span{
+  display:block;
+  height:100%;
+  background: #10b981;
+}
+
+/* tabs */
+.w-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.w-tab{
+  border: 1px solid #cbd5e1;
+  background:#f8fafc;
+  color:#334155;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor:pointer;
+  transition: .2s;
+}
+.w-tab:hover{ background:#eef2f7; }
+.w-tab.active{
+  border-color:#10b981;
+  background: #d1fae5;
+  color:#047857;
+  box-shadow: 0 0 0 3px rgba(16,185,129,.18);
+}
+
+/* chart placeholder */
+.w-chart{ margin-top: 6px; }
+.w-chart-box{
+  height: 250px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border:1px solid #e2e8f0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#94a3b8;
+  font-weight:600;
+}
+
+/* range buttons */
+.w-range{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.w-range button{
+  border:1px solid #cbd5e1;
+  background:#fff;
+  color:#334155;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor:pointer;
+  transition:.2s;
+}
+.w-range button:hover{ background:#f1f5f9; }
+.w-range button.active{
+  background:#d1fae5;
+  border-color:#10b981;
+  color:#047857;
+  box-shadow: 0 0 0 3px rgba(16,185,129,.18);
+}
+
+/* Today market header row */
+.w-card-head--row{
+  align-items:flex-start;
+}
+.w-actions{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.w-switch{
+  display:inline-flex;
+  border:1px solid #cbd5e1;
+  background:#fff;
+  padding: 3px;
+  border-radius: 10px;
+}
+.w-switch button{
+  border:0;
+  background:transparent;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor:pointer;
+  color:#334155;
+}
+.w-switch button.active{
+  background:#d1fae5;
+  color:#047857;
+  border:1px solid rgba(16,185,129,.45);
+}
+.w-refresh{
+  border:1px solid #cbd5e1;
+  background:#fff;
+  font-size: 11px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor:pointer;
+}
+.w-refresh:hover{ background:#f1f5f9; }
+
+/* list items */
+.w-list{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  margin-top: 12px;
+}
+.w-item{
+  border:1px solid #e2e8f0;
+  background:#fff;
+  border-radius: 12px;
+  padding: 10px;
+  display:grid;
+  grid-template-columns: 1fr auto 90px;
+  gap: 10px;
+  align-items:center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+.w-item-left{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  min-width:0;
+}
+.w-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#10b981;
+}
+.w-sym{ font-weight:800; font-size: 12px; color:#0f172a; }
+.w-sub{ font-size: 10px; color:#64748b; }
+
+.w-item-right{ text-align:right; }
+.w-price{ font-weight:800; color:#0f172a; }
+.w-price span{ font-size: 10px; color:#94a3b8; }
+.w-chg{ font-size: 12px; font-weight:700; color:#10b981; }
+
+.w-spark{
+  height: 34px;
+  border-radius: 10px;
+  background: #f1f5f9;
+}
+
+/* ticker like bottom strip */
+.w-ticker{
+  width: min(820px, 92vw);
+  height: 30px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  background: rgba(0,0,0,.35);
+  overflow:hidden;
+  backdrop-filter: blur(6px);
+}
+
+.w-ticker-inner{
+  display:flex;
+  gap: 18px;
+  align-items:center;
+  height:100%;
+  padding: 0 14px;
+  color: rgba(255,255,255,.85);
+  font-size: 11px;
+  white-space:nowrap;
+  animation: ticker 18s linear infinite;
+}
+@keyframes ticker{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-40%); }
+}
+
+/* responsive */
+@media (max-width: 720px){
+  .w-card--wide{ width: min(520px, 92vw); }
+  .w-item{ grid-template-columns: 1fr auto; }
+  .w-spark{ display:none; }
+}
