@@ -1,0 +1,33 @@
+{% extends 'dina_base.html.twig' %}
+
+{% block title %}Pricing{% endblock %}
+
+{% block body %}
+<section class="dina-section">
+    <div class="container">
+        <h1 class="section-title">Simple Pricing</h1>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Starter</h3>
+                <p class="price">$99 / month</p>
+                <ul>
+                    <li>Basic widgets</li>
+                    <li>Search module</li>
+                    <li>Theme customization</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Enterprise</h3>
+                <p class="price">Custom</p>
+                <ul>
+                    <li>Advanced widgets</li>
+                    <li>Custom data sources</li>
+                    <li>API integration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

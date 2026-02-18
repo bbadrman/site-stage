@@ -6,23 +6,28 @@
   <title>{% block title %}Dina{% endblock %}</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  {# Dina-only CSS #}
   <link rel="stylesheet" href="{{ asset('css/dina.css') }}">
 </head>
 
 <body class="dina-layout">
 
+  {% set current = app.request.attributes.get('_route') %}
+
   <header class="dina-nav">
-    <div class="dina-brand">CORTELYTICS</div>
+    <a class="dina-brand" href="{{ path('app_dina') }}">CORTELYTICS</a>
 
     <nav class="dina-links">
-      <a href="#">About</a>
-      <a href="#">Widgets</a>
-      <a href="#">Solutions</a>
-      <a href="#">Pricing</a>
-      <a href="#">Contact</a>
-      <a class="dina-signin" href="{{ path('app_login') }}">Sign In</a>
+      <a href="{{ path('app_about') }}" class="{{ current == 'app_about' ? 'active' : '' }}">About</a>
+      <a href="{{ path('app_widgets') }}" class="{{ current == 'app_widgets' ? 'active' : '' }}">Widgets</a>
+      <a href="{{ path('app_solutions') }}" class="{{ current == 'app_solutions' ? 'active' : '' }}">Solutions</a>
+      <a href="{{ path('app_pricing') }}" class="{{ current == 'app_pricing' ? 'active' : '' }}">Pricing</a>
+      <a href="{{ path('app_contact') }}" class="{{ current == 'app_contact' ? 'active' : '' }}">Contact</a>
+
+      {% if app.user %}
+        <a class="dina-signin" href="{{ path('app_logout') }}">Logout</a>
+      {% else %}
+        <a class="dina-signin" href="{{ path('app_login') }}">Sign In</a>
+      {% endif %}
     </nav>
   </header>
 

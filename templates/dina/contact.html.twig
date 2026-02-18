@@ -1,0 +1,49 @@
+{% extends 'dina_base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+<section class="dina-section">
+
+  <div class="page-hero">
+    <h1 class="page-title">Contact Us</h1>
+    <p class="page-subtitle">
+      Have questions, partnership ideas, or custom integration needs?
+      Send us a message and our team will reply quickly.
+    </p>
+  </div>
+
+  <div style="display:flex; justify-content:center; margin-top:40px;">
+
+    <div class="login-box" style="width:520px; max-width:100%;">
+      <h3>Send Message</h3>
+
+      <form class="auth-form">
+
+        <div class="field">
+          <input type="text" class="input" placeholder="Full name">
+        </div>
+
+        <div class="field">
+          <input type="email" class="input" placeholder="Email">
+        </div>
+
+        <div class="field">
+          <input type="text" class="input" placeholder="Company (optional)">
+        </div>
+
+        <div class="field">
+          <textarea class="input" rows="5" placeholder="Tell us what you have in mind..."></textarea>
+        </div>
+
+        <button class="btn primary">Send Message</button>
+
+      </form>
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

@@ -23,6 +23,6 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
             return new RedirectResponse($this->urlGenerator->generate("app_admin_dashboard"));
         }
 
-        return new RedirectResponse($this->urlGenerator->generate("app_home"));
+        return new RedirectResponse($this->urlGenerator->generate("app_dina"));
     }
 }
