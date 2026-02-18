@@ -1,0 +1,155 @@
+/* ===== Pricing page (same style as screenshot) ===== */
+
+.pricing-page{
+  padding: 70px 0 90px;
+  position: relative;
+}
+
+/* background gradient like screenshot */
+.pricing-page::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(900px 700px at 25% 30%, rgba(22,199,132,.25), transparent 60%),
+    radial-gradient(900px 700px at 80% 20%, rgba(16,185,129,.28), transparent 55%),
+    linear-gradient(90deg, rgba(10,33,60,.85) 0%, rgba(22,199,132,.65) 55%, rgba(52,211,153,.65) 100%);
+}
+
+.pricing-wrap{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.pricing-hero{
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.pricing-hero h1{
+  margin: 0 0 12px;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #EAF0FF;
+}
+
+.pricing-hero p{
+  margin: 0 auto;
+  max-width: 720px;
+  color: rgba(234,240,255,.78);
+  line-height: 1.7;
+}
+
+/* cards */
+.pricing-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: stretch;
+  margin-top: 26px;
+}
+
+.price-card{
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 26px 70px rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.price-card.starter{
+  background: rgba(9, 148, 101, .85);
+}
+
+.price-card.enterprise{
+  background: rgba(6, 68, 52, .92);
+}
+
+/* top */
+.price-top h3{
+  margin: 0 0 14px;
+  color: rgba(234,240,255,.9);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.price-value{
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.price-amount{
+  font-size: 40px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.price-per{
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255,255,255,.85);
+}
+
+/* list */
+.price-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: rgba(255,255,255,.9);
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.price-list li{
+  display: block;
+}
+
+.price-list .muted{
+  color: rgba(255,255,255,.70);
+  font-weight: 500;
+}
+
+/* button */
+.price-btn{
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 900;
+  border: 1px solid rgba(255,255,255,.14);
+  transition: .2s;
+}
+
+.price-btn.dark{
+  background: rgba(0,0,0,.35);
+  color: rgba(255,255,255,.92);
+}
+
+.price-btn.green{
+  background: #16c784;
+  color: #062a1e;
+  border-color: rgba(22,199,132,.55);
+}
+
+.price-btn:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .pricing-grid{
+    grid-template-columns: 1fr;
+  }
+  .pricing-hero h1{
+    font-size: 36px;
+  }
+}

@@ -2,32 +2,70 @@
 
 {% block title %}Pricing{% endblock %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('css/pricing.css') }}">
+{% endblock %}
+
 {% block body %}
-<section class="dina-section">
-    <div class="container">
-        <h1 class="section-title">Simple Pricing</h1>
+<section class="pricing-page">
+  <div class="pricing-wrap">
 
-        <div class="cards">
-            <div class="card">
-                <h3>Starter</h3>
-                <p class="price">$99 / month</p>
-                <ul>
-                    <li>Basic widgets</li>
-                    <li>Search module</li>
-                    <li>Theme customization</li>
-                </ul>
-            </div>
+    <header class="pricing-hero">
+      <h1>Simple, Transparent Pricing</h1>
+      <p>
+        Choose the right plan for your newsroom and scale Cortelytics financial widgets as your audience grows.
+      </p>
+    </header>
 
-            <div class="card">
-                <h3>Enterprise</h3>
-                <p class="price">Custom</p>
-                <ul>
-                    <li>Advanced widgets</li>
-                    <li>Custom data sources</li>
-                    <li>API integration</li>
-                </ul>
-            </div>
+    <div class="pricing-grid">
+
+      <!-- STARTER -->
+      <article class="price-card starter">
+        <div class="price-top">
+          <h3>Starter</h3>
+
+          <div class="price-value">
+            <span class="price-amount">$99</span><span class="price-per">/mo</span>
+          </div>
         </div>
+
+        <ul class="price-list">
+          <li>Basic widgets</li>
+          <li>Search module</li>
+          <li>Basic theme customization</li>
+        </ul>
+
+        <a class="price-btn dark" href="{{ path('app_contact') }}">Choose Plan</a>
+      </article>
+
+      <!-- ENTERPRISE -->
+      <article class="price-card enterprise">
+        <div class="price-top">
+          <h3>Enterprise</h3>
+
+          <div class="price-value">
+            <span class="price-amount">Custom</span>
+          </div>
+        </div>
+
+        <ul class="price-list">
+          <li>Tailored quote</li>
+          <li>Advanced widgets</li>
+          <li>
+            Custom data sources:
+            <span class="muted">equities, commodities, ETFs, indices, crypto.</span>
+          </li>
+          <li><b>Custom API integrations</b></li>
+          <li><b>Multi-language</b> & regional market coverage</li>
+          <li>Precision branding</li>
+        </ul>
+
+        <a class="price-btn green" href="{{ path('app_contact') }}">Talk to Sales</a>
+      </article>
+
     </div>
+
+  </div>
 </section>
 {% endblock %}
