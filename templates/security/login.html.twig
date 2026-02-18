@@ -26,13 +26,13 @@
       <form method="post" class="auth-form">
         <div class="field">
           <input
-            type="email"
+            type="text"
             value="{{ last_username }}"
             name="_username"
-            id="inputEmail"
+            id="inputUsername"
             class="input"
-            autocomplete="email"
-            placeholder="Email"
+            autocomplete="username"
+            placeholder="Email or username"
             required
             autofocus
           >
@@ -59,11 +59,11 @@
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
         <button class="btn primary" type="submit">Sign in</button>
-        <p class="auth-link">
-  Don't have an account?
-  <a href="{{ path('app_register') }}">Register</a>
-</p>
 
+        <p class="auth-link">
+          Don't have an account?
+          <a href="{{ path('app_register') }}">Register</a>
+        </p>
       </form>
     </div>
 

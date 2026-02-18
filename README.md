@@ -121,6 +121,15 @@ site-stage/
 └── .env             # Variables d'environnement
 ```
 
+## Améliorations récentes
+
+### Authentification par Nom d'utilisateur (Username)
+Le système d'authentification a été mis à jour pour permettre la connexion via **e-mail** ou **nom d'utilisateur**.
+- **Entité User** : Ajout d'un champ `username` unique.
+- **Inscription** : Le formulaire d'inscription inclut désormais un champ pour choisir un nom d'utilisateur.
+- **Connexion** : Le champ identifiant accepte indifféremment l'e-mail ou le nom d'utilisateur.
+- **Provider de sécurité** : Logiciel de recherche mis à jour dans `App\Security\UserProvider`.
+
 ## Licence
 
 MIT

@@ -1,49 +1,59 @@
 {% extends 'dina_base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block stylesheets %}
-  {{ parent() }}
-  <link rel="stylesheet" href="{{ asset('css/dina.css') }}">
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/dina.css') }}">
 {% endblock %}
 
 {% block body %}
-<div class="dina-page">
-  <div class="hero-container">
+	<div class="dina-page">
+		<div class="hero-container">
 
-    <div class="hero-left">
-      <h1 class="hero-title">Create your account.</h1>
-      <p class="hero-subtitle">Join Dina and start your journey with a modern experience.</p>
-    </div>
+			<div class="hero-left">
+				<h1 class="hero-title">Create your account.</h1>
+				<p class="hero-subtitle">Join Dina and start your journey with a modern experience.</p>
+			</div>
 
-    <div class="login-box">
-      <h3>Create Account</h3>
+			<div class="login-box">
+				<h3>Create Account</h3>
 
-      {{ form_start(registrationForm, {'attr': {'class': 'auth-form'}}) }}
+				{{ form_start(registrationForm, {'attr': {'class': 'auth-form'}}) }}
+				<div class="field">
+					{{ form_widget(registrationForm.name, {'attr': {'class': 'input', 'placeholder': 'Full name'}}) }}
+					{{ form_errors(registrationForm.name) }}
+				</div>
 
-        <div class="field">
-          {{ form_widget(registrationForm.email, {'attr': {'class': 'input', 'placeholder': 'Email'}}) }}
-          {{ form_errors(registrationForm.email) }}
-        </div>
+				<div class="field">
+					{{ form_widget(registrationForm.username, {'attr': {'class': 'input', 'placeholder': 'Username'}}) }}
+					{{ form_errors(registrationForm.username) }}
+				</div>
 
-        <div class="field">
-          {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input', 'placeholder': 'Password'}}) }}
-          {{ form_errors(registrationForm.plainPassword) }}
-        </div>
+				<div class="field">
+					{{ form_widget(registrationForm.email, {'attr': {'class': 'input', 'placeholder': 'Email'}}) }}
+					{{ form_errors(registrationForm.email) }}
+				</div>
 
-        <div class="remember-row" style="justify-content:flex-start;">
-          {{ form_widget(registrationForm.agreeTerms) }}
-          <span style="margin-left:8px;">Agree terms</span>
-          {{ form_errors(registrationForm.agreeTerms) }}
-        </div>
+				<div class="field">
+					{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input', 'placeholder': 'Password'}}) }}
+					{{ form_errors(registrationForm.plainPassword) }}
+				</div>
 
-        <button type="submit" class="btn primary">Register</button>
+				<div class="remember-row" style="justify-content:flex-start;">
+					{{ form_widget(registrationForm.agreeTerms) }}
+					<span style="margin-left:8px;">Agree terms</span>
+					{{ form_errors(registrationForm.agreeTerms) }}
+				</div>
 
-        <a href="{{ path('app_login') }}" class="btn secondary">Already have an account? Login</a>
+				<button type="submit" class="btn primary">Register</button>
 
-      {{ form_end(registrationForm) }}
-    </div>
+				<a href="{{ path('app_login') }}" class="btn secondary">Already have an account? Login</a>
 
-  </div>
-</div>
+				{{ form_end(registrationForm) }}
+			</div>
+
+		</div>
+	</div>
 {% endblock %}
