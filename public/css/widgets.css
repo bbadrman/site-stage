@@ -177,3 +177,169 @@
 .w-page{
   background: transparent !important;
 }
+/* =========================
+   MARKET LIST — Light cards like the screenshot
+   (put this at the END of widgets.css)
+========================= */
+
+/* panel */
+.w-market{
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 22px;
+  padding: 18px;
+}
+
+/* header title in light style */
+.w-market-head h3{
+  margin:0;
+  font-size:16px;
+  font-weight:800;
+  color: rgba(234,240,255,.92);
+}
+
+/* cards */
+.w-item{
+  background: #f2f4f5;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
+  padding: 14px 14px;
+  margin-bottom: 12px;
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.14),
+    inset 0 1px 0 rgba(255,255,255,.75);
+
+  transition: .25s;
+}
+.w-item:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.20);
+  background:#f7f9fa;
+}
+
+/* left side layout */
+.w-item-left{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+/* dot */
+.w-dot{
+  width:8px;height:8px;border-radius:50%;
+  margin-top:5px;
+}
+.w-dot.up{ background:#16c784; }
+.w-dot.down{ background:#ea3943; }
+
+/* text */
+.w-sym{ font-weight:800; font-size:13px; color:#111; letter-spacing:.2px; }
+
+.w-price{
+  font-weight:900;
+  font-size:20px;
+  line-height:1.05;
+  color:#0b0b0b;
+}
+.w-usd{ font-size:11px; font-weight:700; color:#9aa0a6; margin-left:4px; }
+
+.w-change{
+  font-size:12px;
+  font-weight:800;
+  margin-top:4px;
+}
+.w-change.up{ color:#16c784; }
+.w-change.down{ color:#ea3943; }
+
+.w-time{
+  font-size:11px;
+  color:#9aa0a6;
+  margin-top:3px;
+}
+
+/* right side: tag + spark placeholder */
+.w-item-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+  min-width:120px;
+}
+
+.w-tag{
+  font-size:11px;
+  font-weight:800;
+  color:#7b8088;
+}
+
+/* mini chart placeholder (simple spark) */
+.w-spark{
+  width:110px;
+  height:36px;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,0));
+  position:relative;
+  overflow:hidden;
+}
+/* ===== controls ===== */
+.w-controls{ display:flex; align-items:center; gap:10px; }
+
+.w-toggle{
+  display:inline-flex;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.w-toggle button{
+  border:0;
+  background:transparent;
+  color: rgba(234,240,255,.85);
+  font-weight:800;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.w-toggle button.active{
+  background:#16c784;
+  color:#04140d;
+  box-shadow:0 0 10px rgba(22,199,132,.55);
+}
+
+.w-refresh{
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.10);
+  color: rgba(234,240,255,.9);
+  font-weight:800;
+  font-size:12px;
+  padding:7px 10px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.2s;
+}
+.w-refresh:hover{
+  border-color: rgba(22,199,132,.35);
+  background: rgba(22,199,132,.12);
+}
+/* sparkline real svg */
+.w-spark{
+  width:110px;
+  height:36px;
+  border-radius:10px;
+  background:#eef1f2;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.w-spark svg{ width:110px; height:36px; }
+.w-spark path{ fill:none; stroke-width:2.6; }
+
+.w-spark.up path{ stroke:#16c784; filter: drop-shadow(0 0 6px rgba(22,199,132,.45)); }
+.w-spark.down path{ stroke:#ea3943; filter: drop-shadow(0 0 6px rgba(234,57,67,.35)); }
