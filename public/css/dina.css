@@ -80,9 +80,6 @@ body.dina-layout::after{
 /* =========================
    HERO LAYOUT (your home)
 ========================= */
-.dina-page{
-  width:100%;
-}
 
 .hero-container{
   display:grid;
@@ -162,7 +159,7 @@ body.dina-layout::after{
 
 .field .input,
 .auth-form .input{
-  width:100%;
+  width: 100%;
   padding:12px 14px;
   border-radius:12px;
   border:1px solid rgba(255,255,255,.14);
@@ -358,16 +355,20 @@ body.dina-layout::after{
    MAIN CONTAINER
 ========================= */
 .dina-main{
-  flex:1;
-  width:min(1200px, 92%);
+  flex: 1;
+  width: min(1200px, 92%);
   margin: 0 auto;
   padding: 50px 0 30px;
   background: transparent !important;
+
+  min-height: calc(100vh - 90px); 
 }
+
 
 /* ✅ force transparency for any page wrappers */
 .dina-layout main,
 .dina-layout section,
+
 .dina-layout .container,
 .dina-layout .wrapper,
 .dina-layout .content,
@@ -661,4 +662,12 @@ body.dina-layout::after{
     radial-gradient(circle at 80% 20%, var(--g2), transparent 42%),
     radial-gradient(circle at 55% 80%, var(--g3), transparent 45%),
     radial-gradient(circle at 40% 55%, rgba(255,255,255,.06), transparent 55%) !important;
+}
+/* ===== AUTH FULL HEIGHT FIX ===== */
+.auth-page{
+  min-height: calc(100vh - 90px); /* نفس اللي فوق */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
 }
