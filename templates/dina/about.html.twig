@@ -1,72 +1,70 @@
 {% extends 'dina_base.html.twig' %}
 
-{% block title %}About{% endblock %}
-
-{% block stylesheets %}
-  {{ parent() }}
-  <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+{% block title %}About
 {% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/dina.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/about.css') }}">
+{% endblock %}
+
 
 {% block body %}
-<section class="about-page">
-  <div class="about-wrap">
+	<section class="about-page">
+		<div class="about-wrap">
 
-    <header class="about-hero">
-      <h1>About Cortelytics</h1>
+			<header class="about-hero">
+				<h1>About Cortelytics</h1>
 
-      <div class="about-text">
-        <p>
-          Cortelytics builds embeddable financial widgets and live market experiences that slot
-          directly into the news people already read — giving publishers a modern markets layer
-          without the cost of building a terminal.
-        </p>
+				<div class="about-text">
+					<p>
+						Cortelytics builds embeddable financial widgets and live market experiences that slot
+						          directly into the news people already read — giving publishers a modern markets layer
+						          without the cost of building a terminal.
+					</p>
 
-        <p>
-          We integrate with leading market data providers, transform raw feeds into newsroom-ready
-          financial widgets, and provide a premium destination page for deeper stock details.
-        </p>
-      </div>
-    </header>
+					<p>
+						We integrate with leading market data providers, transform raw feeds into newsroom-ready
+						          financial widgets, and provide a premium destination page for deeper stock details.
+					</p>
+				</div>
+			</header>
 
-    <section class="about-section">
-      <h2>Our Values</h2>
 
-      <div class="values-grid">
-        <article class="glass-card">
-          <div class="icon-badge">🛡️</div>
-          <h3>Accuracy</h3>
-          <p>Data integrity and transparent refresh logic.</p>
-        </article>
+			<h2>Our Values</h2>
 
-        <article class="glass-card">
-          <div class="icon-badge">⚡</div>
-          <h3>Performance</h3>
-          <p>Lightweight scripts, fast paints, global caching.</p>
-        </article>
+			<div class="values-grid">
+				<article class="glass-card">
+					<div class="icon-badge">🛡️</div>
+					<h3>Accuracy</h3>
+					<p>Data integrity and transparent refresh logic.</p>
+				</article>
 
-        <article class="glass-card">
-          <div class="icon-badge">💚</div>
-          <h3>Editor-first</h3>
-          <p>Simple workflows that fit your CMS and style.</p>
-        </article>
-      </div>
-    </section>
+				<article class="glass-card">
+					<div class="icon-badge">⚡</div>
+					<h3>Performance</h3>
+					<p>Lightweight scripts, fast paints, global caching.</p>
+				</article>
 
-    <section class="about-section">
-      <h2>Data Providers &amp; Coverage</h2>
+				<article class="glass-card">
+					<div class="icon-badge">💚</div>
+					<h3>Editor-first</h3>
+					<p>Simple workflows that fit your CMS and style.</p>
+				</article>
+			</div>
+			<h2>Data Providers &amp; Coverage</h2>
 
-      <div class="coverage-row">
-        <article class="coverage-card">
-          <div class="icon-badge">🧾</div>
-          <h3>Coverage</h3>
-          <p>
-            Equities, ETFs, indices, FX, and crypto.<br>
-            Regional presets and local index sets included.
-          </p>
-        </article>
-      </div>
-    </section>
+			<div class="glass-card">
 
-  </div>
-</section>
-{% endblock %}
+
+				<h3>Coverage</h3>
+				<p>
+					Equities, ETFs, indices, FX, and crypto.<br>
+					Regional presets and local index sets included.
+				</p>
+
+
+			</div>
+
+
+		</section>
+	{% endblock %}

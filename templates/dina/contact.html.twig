@@ -2,48 +2,45 @@
 
 {% block title %}Contact{% endblock %}
 
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+{% endblock %}
+
 {% block body %}
+<section class="contact-page">
+  <div class="contact-wrap">
+    <div class="contact-grid">
 
-<section class="dina-section">
+      <!-- LEFT -->
+      <div class="contact-left">
+        <h1>Contact Cortelytics</h1>
+        <p>
+          Have questions, partnership ideas, or custom integration needs?
+          Send us a message below.
+        </p>
+      </div>
 
-  <div class="page-hero">
-    <h1 class="page-title">Contact Us</h1>
-    <p class="page-subtitle">
-      Have questions, partnership ideas, or custom integration needs?
-      Send us a message and our team will reply quickly.
-    </p>
-  </div>
+      <!-- RIGHT (FORM CARD) -->
+      <div class="contact-card">
+        <form class="contact-form" method="post" action="#">
+          <div class="contact-row">
+            <input class="contact-input" type="text" name="fullname" placeholder="Full name" required>
+            <input class="contact-input" type="email" name="email" placeholder="Email" required>
+          </div>
 
-  <div style="display:flex; justify-content:center; margin-top:40px;">
+          <input class="contact-input" type="text" name="company" placeholder="Company">
 
-    <div class="login-box" style="width:520px; max-width:100%;">
-      <h3>Send Message</h3>
+          <textarea class="contact-textarea" name="message" rows="7" placeholder="Tell us what you have in mind..." required></textarea>
 
-      <form class="auth-form">
+          <p class="contact-terms">
+            By submitting, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+          </p>
 
-        <div class="field">
-          <input type="text" class="input" placeholder="Full name">
-        </div>
+          <button class="contact-btn" type="submit">Send Message</button>
+        </form>
+      </div>
 
-        <div class="field">
-          <input type="email" class="input" placeholder="Email">
-        </div>
-
-        <div class="field">
-          <input type="text" class="input" placeholder="Company (optional)">
-        </div>
-
-        <div class="field">
-          <textarea class="input" rows="5" placeholder="Tell us what you have in mind..."></textarea>
-        </div>
-
-        <button class="btn primary">Send Message</button>
-
-      </form>
     </div>
-
   </div>
-
 </section>
-
 {% endblock %}

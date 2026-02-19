@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Dina{% endblock %}</title>
+  <title>{% block title %}Aksam{% endblock %}</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/dina.css') }}">
 
   {% block stylesheets %}{% endblock %}
 </head>
-
 <body class="dina-layout">
+  <div class="dina-grid"></div>
+  <div class="dina-shimmer"></div>
+  <div class="dina-map"></div>
 
-  {% set current = app.request.attributes.get('_route') %}
+
+  {% set r = app.request.attributes.get('_route') %}
 
   <header class="dina-nav">
     <a class="dina-brand" href="{{ path('app_dina') }}">Cortelytics</a>
 
     <nav class="dina-links">
-      <a href="{{ path('app_about') }}" class="{{ current == 'app_about' ? 'active' : '' }}">About</a>
-      <a href="{{ path('app_widgets') }}" class="{{ current == 'app_widgets' ? 'active' : '' }}">Widgets</a>
-      <a href="{{ path('app_solutions') }}" class="{{ current == 'app_solutions' ? 'active' : '' }}">Solutions</a>
-      <a href="{{ path('app_pricing') }}" class="{{ current == 'app_pricing' ? 'active' : '' }}">Pricing</a>
-      <a href="{{ path('app_contact') }}" class="{{ current == 'app_contact' ? 'active' : '' }}">Contact</a>
+      <a href="{{ path('app_about') }}" class="{{ r == 'app_about' ? 'active' : '' }}">About</a>
+      <a href="{{ path('app_widgets') }}" class="{{ r == 'app_widgets' ? 'active' : '' }}">Widgets</a>
+      <a href="{{ path('app_solutions') }}" class="{{ r == 'app_solutions' ? 'active' : '' }}">Solutions</a>
+      <a href="{{ path('app_pricing') }}" class="{{ r == 'app_pricing' ? 'active' : '' }}">Pricing</a>
+      <a href="{{ path('app_contact') }}" class="{{ r == 'app_contact' ? 'active' : '' }}">Contact</a>
 
       {% if app.user %}
         <a class="dina-signin" href="{{ path('app_logout') }}">Logout</a>
@@ -36,6 +39,8 @@
   <main class="dina-main">
     {% block body %}{% endblock %}
   </main>
+
+    {% include 'dina/footer.html.twig' %}
 
   {% block javascripts %}{% endblock %}
 </body>

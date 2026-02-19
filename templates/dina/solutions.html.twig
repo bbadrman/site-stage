@@ -2,32 +2,198 @@
 
 {% block title %}Solutions{% endblock %}
 
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('css/dina.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/solutions.css') }}">
+{% endblock %}
+
+
 {% block body %}
-<section class="dina-section">
-    <div class="container">
-        <h1 class="section-title">Solutions</h1>
+<section class="sol-page">
 
-        <p class="section-text">
-            Cortelytics helps media platforms, fintech startups and enterprise
-            businesses integrate financial data solutions quickly and securely.
-        </p>
 
-        <div class="cards">
-            <div class="card">
-                <h3>News Platforms</h3>
-                <p>Add financial data to articles and business news pages.</p>
+  <div class="sol-wrap">
+    <!-- HERO -->
+    <header class="sol-hero">
+      <h1>Financial widgets<br>solutions for modern<br>newsrooms.</h1>
+
+      <p>
+        Cortelytics powers your site with live financial widgets and Premium Stock Pages —
+        giving editors, developers, and business teams the tools they need to ship market context fast.
+      </p>
+
+      <a class="sol-btn" href="{{ path('app_contact') }}">Request a Demo</a>
+    </header>
+
+    <!-- BIG GLASS MOCK -->
+    <section class="sol-mock" aria-label="widgets mock">
+      <div class="sol-mock-grid">
+        <div class="sol-skel">
+          <div class="row">
+            <span class="b"></span><span class="b"></span><span class="b"></span>
+          </div>
+          <div class="cards">
+            <div class="c">
+              <span class="l"></span><span class="l"></span><span class="s"></span>
             </div>
-
-            <div class="card">
-                <h3>Fintech Apps</h3>
-                <p>Integrate market data APIs into your trading applications.</p>
+            <div class="c">
+              <span class="l"></span><span class="l"></span><span class="s"></span>
             </div>
-
-            <div class="card">
-                <h3>Enterprise</h3>
-                <p>Custom integrations and tailored financial dashboards.</p>
+            <div class="c">
+              <span class="l"></span><span class="l"></span><span class="s"></span>
             </div>
+            <div class="c">
+              <span class="l"></span><span class="l"></span><span class="s"></span>
+            </div>
+          </div>
         </div>
-    </div>
+
+        <div class="sol-skel sol-skel--right">
+          <div class="row">
+            <span class="b"></span><span class="b"></span>
+          </div>
+          <div class="big"></div>
+          <div class="small"></div>
+        </div>
+      </div>
+
+      <p class="sol-mock-note">
+        Visualization: Basic Widget (left) routing to Premium Stock Page module (right).
+      </p>
+    </section>
+
+    <!-- TABS -->
+    <section class="sol-tabs" data-tabs>
+      <button class="sol-tab active" data-panel="newsrooms">Newsrooms &amp; Editors</button>
+      <button class="sol-tab" data-panel="devs">Developers</button>
+      <button class="sol-tab" data-panel="biz">Business/Revenue</button>
+      <button class="sol-tab" data-panel="local">Local &amp; Niche</button>
+    </section>
+
+    <!-- PANELS -->
+    <section class="sol-panels">
+      <!-- panel 1 -->
+      <div class="sol-panel active" id="panel-newsrooms">
+        <div class="sol-cards">
+          <article class="sol-card">
+            <h3>Editor-first widgets</h3>
+            <p>
+              Drop-in Basic Widget with 4–5 indices, plus search that routes readers to Premium Stock Pages.
+            </p>
+          </article>
+
+          <article class="sol-card">
+            <h3>Ticker search</h3>
+            <p>
+              Type a company or ticker and send readers to /stocks/[SYMBOL] with richer financial data.
+            </p>
+          </article>
+
+          <article class="sol-card">
+            <h3>Brand-matched</h3>
+            <p>
+              Green/black/white theme, dark/light, typography that matches your existing news design.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <!-- panel 2 -->
+      <div class="sol-panel" id="panel-devs">
+        <div class="sol-cards">
+          <article class="sol-card">
+            <h3>Fast embed</h3>
+            <p>Simple JS + CSS embed with lightweight markup and caching-friendly requests.</p>
+          </article>
+
+          <article class="sol-card">
+            <h3>Custom routes</h3>
+            <p>Plug to your Symfony routes, SEO pages, and custom landing experiences.</p>
+          </article>
+
+          <article class="sol-card">
+            <h3>API control</h3>
+            <p>Control refresh intervals, ranges, symbols, and locale formatting.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- panel 3 -->
+      <div class="sol-panel" id="panel-biz">
+        <div class="sol-cards">
+          <article class="sol-card">
+            <h3>Engagement</h3>
+            <p>Keep users longer with live context and market movement signals.</p>
+          </article>
+
+          <article class="sol-card">
+            <h3>Upsell-ready</h3>
+            <p>Premium pages &amp; deeper coverage open doors for subscriptions and sponsorships.</p>
+          </article>
+
+          <article class="sol-card">
+            <h3>Regional coverage</h3>
+            <p>Equities, ETFs, indices, FX, and crypto — scalable by region.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- panel 4 -->
+      <div class="sol-panel" id="panel-local">
+        <div class="sol-cards">
+          <article class="sol-card">
+            <h3>Local presets</h3>
+            <p>Curated lists for your audience: local indices + popular tickers.</p>
+          </article>
+
+          <article class="sol-card">
+            <h3>Lightweight mode</h3>
+            <p>Smaller widgets for smaller sites (fast load, minimal JS).</p>
+          </article>
+
+          <article class="sol-card">
+            <h3>One theme</h3>
+            <p>Same green identity across pages: about, widgets, solutions, pricing.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sol-cta">
+      <h2>Ready to launch financial widgets on your site?</h2>
+      <p>
+        Launch the Basic Widget in minutes. Upgrade to Premium Stock Pages for deeper engagement
+        and new revenue opportunities.
+      </p>
+      <a class="sol-btn sol-btn--dark" href="{{ path('app_contact') }}">Request a Demo</a>
+    </section>
+  </div>
 </section>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+  const tabsWrap = document.querySelector('[data-tabs]');
+  if (tabsWrap) {
+    const tabs = [...tabsWrap.querySelectorAll('.sol-tab')];
+    const panels = {
+      newsrooms: document.getElementById('panel-newsrooms'),
+      devs: document.getElementById('panel-devs'),
+      biz: document.getElementById('panel-biz'),
+      local: document.getElementById('panel-local'),
+    };
+
+    tabsWrap.addEventListener('click', (e) => {
+      const btn = e.target.closest('.sol-tab');
+      if (!btn) return;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      Object.values(panels).forEach(p => p.classList.remove('active'));
+      const key = btn.dataset.panel;
+      if (panels[key]) panels[key].classList.add('active');
+    });
+  }
+</script>
 {% endblock %}

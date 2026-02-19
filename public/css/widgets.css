@@ -1,32 +1,16 @@
-/* ===== PAGE WRAP ===== */
+/* =========================
+   WIDGETS — matches global green theme
+========================= */
 
-.w-page{
-  position:relative;
-  padding:60px 0 100px;
-}
+.w-page{ position:relative; padding:60px 0 100px; }
+.w-wrap{ width:min(1050px,92%); margin:0 auto; }
 
-.w-wrap{
-  width:min(1050px,92%);
-  margin:0 auto;
-}
+/* hero */
+.w-hero{ text-align:center; margin-bottom:40px; }
+.w-hero h1{ margin:0; font-size:42px; font-weight:900; }
+.w-hero p{ color: rgba(234,240,255,.78); margin-top:10px; }
 
-/* hero text */
-.w-hero{
-  text-align:center;
-  margin-bottom:40px;
-}
-.w-hero h1{
-  margin:0;
-  font-size:42px;
-  font-weight:900;
-}
-.w-hero p{
-  color:#b7c9e6;
-  margin-top:10px;
-}
-
-/* ================= BIG CARD ================= */
-
+/* BIG CARD */
 .w-card{
   background: rgba(12, 32, 22, 0.55);
   border:1px solid rgba(22,199,132,.35);
@@ -44,16 +28,11 @@
   align-items:center;
   margin-bottom:18px;
 }
+.w-top h2{ margin:0; font-size:20px; }
 
-.w-top h2{
-  margin:0;
-  font-size:20px;
-}
-
-/* progress bar */
+/* progress */
 .w-progress{
-  width:220px;
-  height:8px;
+  width:220px;height:8px;
   background:rgba(255,255,255,.08);
   border-radius:20px;
   overflow:hidden;
@@ -64,42 +43,34 @@
   box-shadow:0 0 12px rgba(22,199,132,.8);
 }
 
-/* ===== tabs ===== */
-
-.w-tabs{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:18px;
-}
+/* tabs */
+.w-tabs{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
 
 .w-pill{
-  border:none;
+  border:1px solid rgba(255,255,255,.12);
   padding:7px 14px;
   border-radius:20px;
   background:rgba(255,255,255,.06);
-  color:#dbe8ff;
+  color:rgba(234,240,255,.9);
   cursor:pointer;
   transition:.2s;
 }
-
 .w-pill.active{
   background:#16c784;
   color:#04140d;
-  font-weight:700;
+  font-weight:800;
   box-shadow:0 0 12px rgba(22,199,132,.7);
 }
 
-/* ===== chart ===== */
-
+/* chart */
 .w-chart{
   height:260px;
   background:rgba(0,0,0,.25);
   border-radius:16px;
   padding:12px;
   margin-bottom:16px;
+  border:1px solid rgba(255,255,255,.10);
 }
-
 .w-line path{
   stroke:#16c784;
   stroke-width:3;
@@ -107,52 +78,47 @@
   filter: drop-shadow(0 0 8px rgba(22,199,132,.8));
 }
 
-/* ===== meta ===== */
-
+/* meta */
 .w-meta{
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
   gap:10px;
   font-size:14px;
+  color: rgba(234,240,255,.82);
 }
-
 .w-badge{
   background:rgba(22,199,132,.2);
   padding:5px 10px;
   border-radius:8px;
+  border:1px solid rgba(22,199,132,.25);
 }
+.w-chg.up{ color:#16c784; font-weight:800; }
+.w-chg.down{ color:#ff5a5a; font-weight:800; }
 
-.w-chg.up{ color:#16c784; }
-.w-chg.down{ color:#ff5a5a; }
-
-/* ===== ranges ===== */
-
+/* range */
 .w-range{
   margin-top:18px;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
 }
-
 .w-range-btn{
-  border:none;
+  border:1px solid rgba(255,255,255,.12);
   padding:7px 14px;
   border-radius:12px;
   background:rgba(255,255,255,.06);
-  color:#cfe5ff;
+  color:rgba(234,240,255,.88);
   cursor:pointer;
 }
-
 .w-range-btn.active{
   background:#16c784;
   color:#04140d;
-  font-weight:700;
+  font-weight:800;
   box-shadow:0 0 12px rgba(22,199,132,.8);
 }
 
-/* ================= MARKET LIST ================= */
-
+/* MARKET */
 .w-market{
   background: rgba(12, 32, 22, 0.55);
   border:1px solid rgba(22,199,132,.35);
@@ -178,41 +144,36 @@
   margin-bottom:12px;
   background:rgba(255,255,255,.05);
   transition:.2s;
+  border:1px solid rgba(255,255,255,.08);
 }
-.w-item:hover{
-  background:rgba(22,199,132,.12);
-}
+.w-item:hover{ background:rgba(22,199,132,.12); border-color: rgba(22,199,132,.22); }
 
-.w-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  margin-right:10px;
-}
+.w-dot{ width:8px;height:8px;border-radius:50%; margin-right:10px; }
 .w-dot.up{ background:#16c784; }
 .w-dot.down{ background:#ff5a5a; }
 
-/* ===== ticker ===== */
-
+/* ticker */
 .w-ticker{
   margin-top:40px;
   overflow:hidden;
   border-radius:16px;
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.45);
   padding:10px 0;
+  border:1px solid rgba(255,255,255,.10);
 }
-
 .w-run{
   display:flex;
   gap:40px;
   animation:ticker 22s linear infinite;
   white-space:nowrap;
 }
-
 .w-tk b{ color:white; }
 .w-tk i{ color:#16c784; }
 
 @keyframes ticker{
-  from{ transform:translateX(0);}
-  to{ transform:translateX(-50%);}
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+.w-page{
+  background: transparent !important;
 }
