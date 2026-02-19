@@ -8,39 +8,27 @@
 
 {% block body %}
 <section class="contact-page">
-  <div class="contact-wrap">
-    <div class="contact-grid">
+ 
+<div class="contact-card">
 
-      <!-- LEFT -->
-      <div class="contact-left">
-        <h1>Contact Cortelytics</h1>
-        <p>
-          Have questions, partnership ideas, or custom integration needs?
-          Send us a message below.
-        </p>
-      </div>
+    {{ form_start(contactForm, {'attr': {'class': 'contact-form'}}) }}
 
-      <!-- RIGHT (FORM CARD) -->
-      <div class="contact-card">
-        <form class="contact-form" method="post" action="#">
-          <div class="contact-row">
-            <input class="contact-input" type="text" name="fullname" placeholder="Full name" required>
-            <input class="contact-input" type="email" name="email" placeholder="Email" required>
-          </div>
-
-          <input class="contact-input" type="text" name="company" placeholder="Company">
-
-          <textarea class="contact-textarea" name="message" rows="7" placeholder="Tell us what you have in mind..." required></textarea>
-
-          <p class="contact-terms">
-            By submitting, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
-          </p>
-
-          <button class="contact-btn" type="submit">Send Message</button>
-        </form>
-      </div>
-
+    <div class="contact-row">
+        {{ form_widget(contactForm.fullName) }}
+        {{ form_widget(contactForm.email) }}
     </div>
-  </div>
+
+    {{ form_widget(contactForm.company) }}
+    {{ form_widget(contactForm.message) }}
+
+    <p class="contact-terms">
+      By submitting, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+    </p>
+
+    <button class="contact-btn">Send Message</button>
+
+    {{ form_end(contactForm) }}
+
+</div>
 </section>
 {% endblock %}
